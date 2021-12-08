@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="digbot4">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.0017086 -1.5259E-05 0.0099399"
+        rpy="0 0 0" />
+      <mass
+        value="7.7847" />
+      <inertia
+        ixx="0.23243"
+        ixy="0.034723"
+        ixz="0.009629"
+        iyy="0.66851"
+        iyz="-3.3151E-05"
+        izz="0.79633" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="front_left_wheel">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 -0.039422 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.4333" />
+      <inertia
+        ixx="0.01081"
+        ixy="4.1184E-18"
+        ixz="6.5706E-18"
+        iyy="0.019308"
+        iyz="-1.627E-18"
+        izz="0.01081" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.42137 0.28042 -0.070077"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_left_wheel" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="front_right_wheel">
+    <inertial>
+      <origin
+        xyz="4.1633E-17 0.039422 -5.5511E-17"
+        rpy="0 0 0" />
+      <mass
+        value="1.4333" />
+      <inertia
+        ixx="0.01081"
+        ixy="-8.2595E-19"
+        ixz="-2.4271E-18"
+        iyy="0.019308"
+        iyz="-1.3775E-18"
+        izz="0.01081" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0.42137 -0.28042 -0.070077"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right_wheel" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="rear_left_wheel">
+    <inertial>
+      <origin
+        xyz="0 -0.039422 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.4333" />
+      <inertia
+        ixx="0.01081"
+        ixy="4.7944E-18"
+        ixz="-6.2535E-19"
+        iyy="0.019308"
+        iyz="-6.9202E-19"
+        izz="0.01081" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_left_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_left_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.40574 0.28042 -0.070077"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_left_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="rear_right_wheel">
+    <inertial>
+      <origin
+        xyz="1.1102E-16 0.039422 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.4333" />
+      <inertia
+        ixx="0.01081"
+        ixy="1.9177E-18"
+        ixz="-1.933E-18"
+        iyy="0.019308"
+        iyz="-1.1321E-18"
+        izz="0.01081" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_right_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_right_wheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_right_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="-0.40574 -0.28042 -0.070077"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_right_wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="front_lidar">
+    <inertial>
+      <origin
+        xyz="0 0 -0.025717"
+        rpy="0 0 0" />
+      <mass
+        value="0.40397" />
+      <inertia
+        ixx="0.00034154"
+        ixy="-6.0185E-36"
+        ixz="-2.9161E-37"
+        iyy="0.00034154"
+        iyz="-1.1618E-20"
+        izz="0.00050496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.16885 -0.21895 0.17082"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_lidar" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="rear_lidar">
+    <inertial>
+      <origin
+        xyz="0 0 -0.025717"
+        rpy="0 0 0" />
+      <mass
+        value="0.40397" />
+      <inertia
+        ixx="0.00034154"
+        ixy="0"
+        ixz="-2.9161E-37"
+        iyy="0.00034154"
+        iyz="-1.1618E-20"
+        izz="0.00050496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_lidar.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_lidar.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_lidar_joint"
+    type="fixed">
+    <origin
+      xyz="-0.2613 0.21895 0.17082"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_lidar" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      effort="1"
+      velocity="1" />
+  </joint>
+  <link
+    name="front_cam_mount">
+    <inertial>
+      <origin
+        xyz="0 -0.0065445 0.015077"
+        rpy="0 0 0" />
+      <mass
+        value="0.12775" />
+      <inertia
+        ixx="0.00037354"
+        ixy="-2.3429E-20"
+        ixz="2.0753E-21"
+        iyy="4.4903E-05"
+        iyz="1.3028E-05"
+        izz="0.0003655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_cam_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6549 0.72157 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_cam_mount.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_cam_mount_joint"
+    type="continuous">
+    <origin
+      xyz="0.16885 -0.24511 0.33858"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_cam_mount" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="front_cam">
+    <inertial>
+      <origin
+        xyz="-0.020781 0.00020805 -8.8061E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.12893" />
+      <inertia
+        ixx="0.00014403"
+        ixy="2.4729E-07"
+        ixz="-1.3986E-07"
+        iyy="2.5851E-05"
+        iyz="5.0336E-09"
+        izz="0.00015223" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/front_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_cam_joint"
+    type="revolute">
+    <origin
+      xyz="0.03 0.0016735 0.035776"
+      rpy="0 0 0" />
+    <parent
+      link="front_cam_mount" />
+    <child
+      link="front_cam" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="rear_cam_mount">
+    <inertial>
+      <origin
+        xyz="0 -0.0065445 0.015077"
+        rpy="0 0 0" />
+      <mass
+        value="0.12775" />
+      <inertia
+        ixx="0.00037354"
+        ixy="-1.6912E-21"
+        ixz="1.8625E-20"
+        iyy="4.4903E-05"
+        iyz="1.3028E-05"
+        izz="0.0003655" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_cam_mount.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.6549 0.72157 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_cam_mount.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_cam_mount_joint"
+    type="continuous">
+    <origin
+      xyz="-0.2613 0.24511 0.33858"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rear_cam_mount" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+  <link
+    name="rear_cam">
+    <inertial>
+      <origin
+        xyz="0.020781 -0.00020805 -8.8061E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.12893" />
+      <inertia
+        ixx="0.00014403"
+        ixy="2.4729E-07"
+        ixz="1.3986E-07"
+        iyy="2.5851E-05"
+        iyz="-5.0336E-09"
+        izz="0.00015223" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_cam.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://digbot4/meshes/rear_cam.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rear_cam_joint"
+    type="revolute">
+    <origin
+      xyz="-0.03 0.0014136 0.035776"
+      rpy="0 0 0" />
+    <parent
+      link="rear_cam_mount" />
+    <child
+      link="rear_cam" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="1"
+      velocity="1" />
+    <dynamics
+      damping="0.1"
+      friction="1" />
+  </joint>
+<gazebo>
+  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+    <updateRate>10</updateRate>
+    <robotNamespace>/</robotNamespace>
+    <leftFrontJoint>front_left_wheel_joint</leftFrontJoint>
+    <rightFrontJoint>front_right_wheel_joint</rightFrontJoint>
+    <leftRearJoint>rear_left_wheel_joint</leftRearJoint>
+    <rightRearJoint>rear_right_wheel_joint</rightRearJoint>
+    <wheelSeparation>0.83</wheelSeparation>
+    <wheelDiameter>0.260</wheelDiameter>
+    <robotBaseFrame>base_link</robotBaseFrame>
+    <torque>20</torque>
+    <topicName>cmd_vel</topicName>
+    <broadcastTF>false</broadcastTF>
+  </plugin>
+</gazebo>
+</robot>
