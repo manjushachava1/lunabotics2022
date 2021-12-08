@@ -1,0 +1,7 @@
+<launch>
+	<env name="GAZEBO_PLUGIN_PATH" value="$GAZEBO_PLUGIN_PATH:~/catkin_ws/devel/lib" />
+	<env name="GAZEBO_MODEL_PATH" value="$GAZEBO_MODEL_PATH:~/.gazebo/models" />
+	<include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+		<arg name="world_name" value="$(find lunabotics)/maps/World_CorrectHeights.world"/>
+	</include>
+</launch>
