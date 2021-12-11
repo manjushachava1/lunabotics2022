@@ -2,15 +2,31 @@ cmake_minimum_required(VERSION 3.0.2)
 project(lunabotics)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+  gazebo_ros
+  roscpp
+  geometry_msgs
+  std_msgs
+  sensor_msgs
+)
+find_package(gazebo REQUIRED)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES robot_tutorial_1
+#  CATKIN_DEPENDS gazebo_ros roscpp
+#  DEPENDS system_libi
+  DEPENDS
+    roscpp
+    gazebo_ros
+    message_runtime
+)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -109,12 +125,23 @@ catkin_package(
 ## Build ##
 ###########
 
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
+# Link to gazebo
+link_directories(
+  ${GAZEBO_LIBRARY_DIRS}
+)
+
+# Include dirs.
 include_directories(
 # include
-# ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
+  ${roscpp_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
 )
+
+# Compile plugin
+add_library(rover_plugin digbot4/plugins/rover.cc)
+target_link_libraries(rover_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${roscpp_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
