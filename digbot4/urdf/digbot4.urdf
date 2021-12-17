@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://lunabotics/wiki.ros.org/sw_urdf_exporter -->
 <robot
-  name="digbot4">
+  xmlns:xacro="http://ros.org/wiki/xacro" name="digbot4">
   <link
     name="base_link">
     <inertial>
@@ -95,7 +95,7 @@
     <child
       link="front_left_wheel" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       effort="1"
       velocity="1" />
@@ -154,7 +154,7 @@
     <child
       link="front_right_wheel" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       effort="1"
       velocity="1" />
@@ -280,6 +280,43 @@
       damping="0.1"
       friction="1" />
   </joint>
+  <gazebo reference="front_lidar">
+    <material>Gazebo/RedGlow</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <sensor type="ray" name="laz">
+       <always_on>true</always_on>
+       <pose>0.1 0 0 1.57 0 0</pose>
+       <visualize>true</visualize>
+       <update_rate>30</update_rate>
+       <ray>
+         <scan>
+           <horizontal>
+             <samples>15</samples>
+             <resolution>1</resolution>
+             <min_angle>-0.39</min_angle>
+             <max_angle>0.39</max_angle>
+           </horizontal>
+           <vertical>
+             <samples>1</samples>
+             <resolution>1</resolution>
+             <min_angle>-0.15</min_angle>
+             <max_angle>0.15</max_angle>
+           </vertical>
+         </scan>
+          <range>
+           <min>0.05</min>
+           <max>15</max>
+           <resolution>0.02</resolution>
+         </range>
+         <noise>
+           <type>gaussian</type>
+           <mean>0.0</mean>
+           <stddev>0.1</stddev>
+         </noise>
+      </ray>
+   </sensor>
+  </gazebo>
   <link
     name="front_lidar">
     <inertial>
@@ -336,6 +373,11 @@
       effort="1"
       velocity="1" />
   </joint>
+  <gazebo reference="rear_lidar">
+    <material>Gazebo/RedGlow</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+  </gazebo>
   <link
     name="rear_lidar">
     <inertial>
@@ -451,6 +493,11 @@
       damping="0.1"
       friction="1" />
   </joint>
+   <!-- d435 frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
+  <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435.urdf.xacro"/>
+  <xacro:sensor_d435 parent="front_cam_mount" name="D435_camera" topics_ns="D435_camera">
+    <origin xyz="-0.020781 0.00020805 -8.8061E-05" rpy="0.0 0.0 0.0"/>
+  </xacro:sensor_d435>
   <link
     name="front_cam">
     <inertial>
@@ -643,7 +690,7 @@
     <wheelSeparation>0.83</wheelSeparation>
     <wheelDiameter>0.260</wheelDiameter>
     <robotBaseFrame>base_link</robotBaseFrame>
-    <torque>20</torque>
+    <torque>100</torque>
     <topicName>cmd_vel</topicName>
     <broadcastTF>false</broadcastTF>
   </plugin>
