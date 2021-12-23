@@ -315,6 +315,10 @@
            <stddev>0.1</stddev>
          </noise>
       </ray>
+      <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
+         <topicName>/gazebo/default/digbot4//base_link/laz/scan</topicName>
+	 <framename>lidar_link</framename>
+      </plugin>
    </sensor>
   </gazebo>
   <link
@@ -408,6 +412,10 @@
            <stddev>0.1</stddev>
          </noise>
       </ray>
+      <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
+         <topicName>/gazebo/default/digbot4/base_link/lazer/scan</topicName>
+	 <framename>lidar_link</framename>
+      </plugin>
    </sensor>
   </gazebo>
   <link

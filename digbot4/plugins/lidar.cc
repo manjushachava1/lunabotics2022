@@ -2,7 +2,6 @@
 #define LAS_SENSOR_PLUGIN
 
 // Include Gazebo headers.
-
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/plugins/RayPlugin.hh>
@@ -24,8 +23,6 @@ namespace gazebo
   {
     private:
     sensors::RaySensorPtr _sensor;
-
-    private:
     physics::LinkPtr _l;
 
     public:
@@ -42,8 +39,6 @@ namespace gazebo
        RayPlugin::Load(_s, _sdf);
 
        _sensor = std::dynamic_pointer_cast<sensors::RaySensor>(_s);
-       ROS_INFO("Laser Sensor Plugin Loaded");
-
        std::string parentName = _sensor->ParentName();
        std::string modelName = "";
        std::string linkName = "";
@@ -51,26 +46,28 @@ namespace gazebo
        linkName = parentName.substr(parentName.find(':') + 2, parentName.size());
 
        physics::WorldPtr _w = physics::get_world(_sensor->WorldName());
-       physics::ModelPtr _m = _w->Models(modelName.c_str());
+       physics::ModelPtr _m = _w->ModelByName(modelName.c_str());
        _l = _m->GetLink(linkName);
+
+       ROS_INFO("Laser Sensor Plugin Loaded");
    }
 
     virtual void OnNewLaserScans()
     {
-        std::string out = "";
-        std::vector<double> ranges;
-        _sensor->Ranges(ranges);
-        double yaw = _sensor->Pose().Rot().Yaw() + _l->GetRelativePose().rot.GetYaw();
-        for(int i = 0; i < ranges.size(); i++)
-        {
-          out = out + "[";
-          out = out + std::to_string(i);
-          out = out + "] ";
-          out = out + std::to_string(ranges[i]);
-          out = out + ", ";
-        }
+      //double yaw = _sensor->Pose().Rot().Yaw() + _l->GetRelativePose().rot.GetYaw();
+      std::string out = "";
+      std::vector<double> ranges;
+      _sensor->Ranges(ranges);
+      for(int i = 0; i < ranges.size(); i++)
+      {
+        out = out + "[";
+        out = out + std::to_string(i);
+        out = out + "] ";
+        out = out + std::to_string(ranges[i]);
+        out = out + ", ";
+      }
       
-        ROS_INFO("%s", yaw, out.c_str()); 
+      ROS_INFO("%s", out.c_str()); 
     };
    };
   
@@ -80,5 +77,3 @@ namespace gazebo
 }
 
 #endif
-
-
