@@ -286,22 +286,22 @@
     <mu2>0.2</mu2>
     <sensor type="ray" name="laz">
        <always_on>true</always_on>
-       <pose>0.1 0 0 1.57 0 0</pose>
+       <pose>0.1 0 -3 1.57 0 0</pose>
        <visualize>true</visualize>
        <update_rate>30</update_rate>
        <ray>
          <scan>
            <horizontal>
-             <samples>15</samples>
+             <samples>360</samples>
              <resolution>1</resolution>
-             <min_angle>-0.39</min_angle>
-             <max_angle>0.39</max_angle>
+             <min_angle>-3.14</min_angle>
+             <max_angle>3.14</max_angle>
            </horizontal>
            <vertical>
              <samples>1</samples>
              <resolution>1</resolution>
-             <min_angle>-0.15</min_angle>
-             <max_angle>0.15</max_angle>
+             <min_angle>-0.01</min_angle>
+             <max_angle>0.01</max_angle>
            </vertical>
          </scan>
           <range>
@@ -377,6 +377,38 @@
     <material>Gazebo/RedGlow</material>
     <mu1>0.2</mu1>
     <mu2>0.2</mu2>
+    <sensor type="ray" name="lazer">
+       <always_on>true</always_on>
+       <pose>0.1 0 -3 1.57 0 0</pose>
+       <visualize>true</visualize>
+       <update_rate>30</update_rate>
+       <ray>
+         <scan>
+           <horizontal>
+             <samples>360</samples>
+             <resolution>1</resolution>
+             <min_angle>-3.14</min_angle>
+             <max_angle>3.14</max_angle>
+           </horizontal>
+           <vertical>
+             <samples>1</samples>
+             <resolution>1</resolution>
+             <min_angle>-0.01</min_angle>
+             <max_angle>0.01</max_angle>
+           </vertical>
+         </scan>
+          <range>
+           <min>0.05</min>
+           <max>15</max>
+           <resolution>0.02</resolution>
+         </range>
+         <noise>
+           <type>gaussian</type>
+           <mean>0.0</mean>
+           <stddev>0.1</stddev>
+         </noise>
+      </ray>
+   </sensor>
   </gazebo>
   <link
     name="rear_lidar">
