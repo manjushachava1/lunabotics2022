@@ -3,7 +3,7 @@
      Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
      For more information, please see http://lunabotics/wiki.ros.org/sw_urdf_exporter -->
 <robot
-  xmlns:xacro="http://ros.org/wiki/xacro" name="digbot4">
+  name="digbot4" xmlns:xacro="http://ros.org/wiki/xacro">
   <link
     name="base_link">
     <inertial>
@@ -451,11 +451,6 @@
       damping="0.1"
       friction="1" />
   </joint>
-   <!-- d435 frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
-  <xacro:include filename="$(find realsense_gazebo_description)/urdf/_d435.urdf.xacro"/>
-  <xacro:sensor_d435 parent="front_cam_mount" name="D435_camera" topics_ns="D435_camera">
-    <origin xyz="-0.020781 0.00020805 -8.8061E-05" rpy="0.0 0.0 0.0"/>
-  </xacro:sensor_d435>
   <link
     name="front_cam">
     <inertial>
@@ -637,6 +632,15 @@
       damping="0.1"
       friction="1" />
   </joint>
+<!-- d435 frame definition can be found at https://github.com/IntelRealSense/librealsense/blob/master/doc/d435i.md -->
+
+<!--<xacro:include filename="$(find digbot4)/urdf/_d435.urdf.xacro"/>-->
+<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro"/>
+  <xacro:arg name="use_nominal_extrinsics" default="True" />
+<sensor_d435 parent="base_link">
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+</sensor_d435>
+
 <gazebo>
   <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
     <updateRate>10</updateRate>
