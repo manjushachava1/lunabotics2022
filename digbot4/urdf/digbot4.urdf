@@ -316,8 +316,8 @@
          </noise>
       </ray>
       <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
-         <topicName>/gazebo/default/digbot4//base_link/laz/scan</topicName>
-	 <framename>lidar_link</framename>
+         <topicName>"/gazebo/default/digbot4/base_link/laz/scan"</topicName>
+	 <framename>"front_lidar"</framename>
       </plugin>
    </sensor>
   </gazebo>
@@ -412,10 +412,6 @@
            <stddev>0.1</stddev>
          </noise>
       </ray>
-      <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
-         <topicName>/gazebo/default/digbot4/base_link/lazer/scan</topicName>
-	 <framename>lidar_link</framename>
-      </plugin>
    </sensor>
   </gazebo>
   <link
@@ -457,6 +453,10 @@
           filename="package://lunabotics/digbot4/meshes/rear_lidar.STL" />
       </geometry>
     </collision>
+    <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
+         <topicName>/gazebo/default/digbot4/base_link/lazer/scan</topicName>
+	 <framename>lidar_link</framename>
+      </plugin>
   </link>
   <joint
     name="rear_lidar_joint"

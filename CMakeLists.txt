@@ -145,6 +145,10 @@ target_link_libraries(rover_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${ros
 add_library(laz_sensor_plugin digbot4/plugins/lidar.cc)
 target_link_libraries(laz_sensor_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${roscpp_LIBRARIES} RayPlugin)
 
+# Build our plugin
+#add_library(velodyne_plugin SHARED velodyne_plugin.cc)
+#target_link_libraries(velodyne_plugin ${GAZEBO_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/lunabotics.cpp
