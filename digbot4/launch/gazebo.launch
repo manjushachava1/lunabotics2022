@@ -1,6 +1,6 @@
 <launch>
-  <!--Map Arg-->
-  <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
+
+<!-- Gazebo rendering -->
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="paused" value="false"/>
@@ -9,9 +9,6 @@
 		<arg name="headless" value="false"/>
 		<arg name="debug" value="false"/>
 	</include>
-    
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
   <node
     name="tf_footprint_base"
@@ -30,30 +27,13 @@
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
 
+  <!--Map Arg-->
+  <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
-  
   <!--Run the tranformer to set the center of the odom frame to the map frame-->
   <node name="static_transform_publisher" type="static_transform_publisher" pkg="tf" args="0 0 0 0 0 0 /map /odom 100"/>
-
-   <!--Run Rviz-->
-  <arg
-    name="model" />
-  <param
-    name="robot_description"
-    textfile="$(find lunabotics)/digbot4/urdf/digbot4.urdf" />
-  <node
-    name="joint_state_publisher_gui"
-    pkg="joint_state_publisher_gui"
-    type="joint_state_publisher_gui" />
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher" />
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find lunabotics)/digbot4/urdf.rviz" />
 
   <!-- Launch lab3 node and path planning nodes-->
   <node name='lab3' pkg='lunabotics' type='lab3_smooth_drive.py'/>
