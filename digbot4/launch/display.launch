@@ -18,6 +18,18 @@
     pkg="rviz"
     type="rviz"
     args="-d $(find lunabotics)/digbot4/rviz/urdf.rviz" />
+
+  <!--Map Arg-->
+  <arg
+    name="map_file"
+    default="$(find lunabotics)/maps/map.yaml"/>
+    <!-- Map server -->
+  <node
+    pkg="map_server"
+    name="map_server"
+    type="map_server"
+    args="$(arg map_file)"/>
+
 </launch>
 
 <!--
