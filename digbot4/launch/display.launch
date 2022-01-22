@@ -1,49 +1,23 @@
 <launch>
 
-  <arg
-    name="model" />
-  <param
-    name="robot_description"
-    textfile="$(find lunabotics)/digbot4/urdf/digbot4.urdf" />
-  <node
-    name="joint_state_publisher_gui"
-    pkg="joint_state_publisher_gui"
-    type="joint_state_publisher_gui" />
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher" />
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find lunabotics)/digbot4/rviz/urdf.rviz" />
+  <arg name="model" />
+  <param name="robot_description" textfile="$(find lunabotics)/digbot4/urdf/digbot4.urdf" />
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lunabotics)/digbot4/rviz/urdf.rviz" />
+
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find lunabotics)/rviz/urdf.rviz" />
+
+  <!-- AMCL -->
+  <include file="$(find lunabotics)/digbot4/launch/amcl.launch"/>
 
   <!--Map Arg-->
-  <arg
-    name="map_file"
-    default="$(find lunabotics)/maps/map.yaml"/>
+  <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
+
     <!-- Map server -->
-  <node
-    pkg="map_server"
-    name="map_server"
-    type="map_server"
-    args="$(arg map_file)"/>
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  <node pkg="tf" type="static_transform_publisher" name="base_map" args="0 0 0 0 0 0 /odom /map 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_link_odom" args="0 0 0 1.571 0 0 /map /base_link 100" />
 
 </launch>
-
-<!--
-<launch>
-
-  <arg name="model" default="$(find lunabotics)/digbot4/urdf/digbot4.urdf"/>
-  <arg name="gui" default="true" />
-  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
-
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-
-  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
-  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
-
-</launch> -->

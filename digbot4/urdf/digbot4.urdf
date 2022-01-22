@@ -655,7 +655,7 @@
     <robotBaseFrame>base_link</robotBaseFrame>
     <torque>100</torque>
     <topicName>cmd_vel</topicName>
-    <broadcastTF>false</broadcastTF>
+    <broadcastTF>true</broadcastTF>
   </plugin>
 </gazebo>
 
