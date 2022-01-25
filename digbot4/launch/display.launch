@@ -12,6 +12,9 @@
   <!-- AMCL -->
   <include file="$(find lunabotics)/digbot4/launch/amcl.launch"/>
 
+  <!-- MOVE BASE -->
+  <include file="$(find lunabotics)/digbot4/launch/move_base.launch"/>
+
   <!--Map Arg-->
   <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
 
