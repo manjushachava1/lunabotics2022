@@ -1,14 +1,16 @@
-package frc.robot;
+package frc.robot.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import frc.robot.Constants;
+
 public class Storage {
     
-    public static final TalonSRX stoTalon = new TalonSRX(Constants.EXC_TALON_ID);
+    public TalonSRX stoTalon;
 
     public Storage(){
-
+        stoTalon = new TalonSRX(Constants.EXC_TALON_ID);
     }
 
     public void deposit(double speed){

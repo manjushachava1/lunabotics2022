@@ -10,6 +10,8 @@ public class Constants {
 
     // Excavator Constants
     public static final int EXC_TALON_ID = 1;
+    public static final int EXC_ROTATE_ID = 3; 
+    public static final int EXC_TRAVERSE_ID = 4; 
 
     // Storage Constants
     public static final int STO_TALON_ID = 2; 
