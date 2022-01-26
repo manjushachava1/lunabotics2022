@@ -15,13 +15,10 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 
 /** Represents a differential drive style drivetrain. */
 public class Drivetrain {
-  public static final TalonSRX excTalon = new TalonSRX(1);
-  public static final TalonSRX stoTalon = new TalonSRX(2);
 
   public static final double kMaxSpeed = 3.0; // meters per second
   public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
