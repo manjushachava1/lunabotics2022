@@ -315,9 +315,11 @@
            <stddev>0.1</stddev>
          </noise>
       </ray>
-      <plugin name = "lidar_plugin" filename = "package://lunabotics/digbot4/plugins/lidar.cc">
+      <plugin name = "laz_sensor_plugin" filename = "liblaz_sensor_plugin_2.so">
+        <!--
         <topicName>"/gazebo/default/digbot4/base_link/laz/scan"</topicName>
 	      <framename>"front_lidar"</framename>
+        -->
       </plugin>
    </sensor>
   </gazebo>
