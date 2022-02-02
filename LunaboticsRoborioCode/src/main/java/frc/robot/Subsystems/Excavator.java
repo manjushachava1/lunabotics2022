@@ -41,6 +41,10 @@ public class Excavator extends SubsystemBase{
         rotateTalon.set(ControlMode.Position, TRAVEL_POS);
     }
 
+    public void stopRotate(){
+        rotateTalon.set(ControlMode.PercentOutput, 0);
+    }
+
     // traverses excavator up and down
     public void traverse(double speed){
         traverseTalon.set(ControlMode.PercentOutput, speed); 
