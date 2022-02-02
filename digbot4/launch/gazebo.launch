@@ -27,10 +27,6 @@
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
 
-  <!--Map Arg-->
-  <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
-  <!-- Map server -->
-  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
   <!--Run the tranformer to set the center of the odom frame to the map frame-->
   <node name="static_transform_publisher" type="static_transform_publisher" pkg="tf" args="0 0 0 0 0 0 /map /odom 100"/>
