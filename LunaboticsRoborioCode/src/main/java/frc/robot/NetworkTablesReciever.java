@@ -14,8 +14,7 @@ public class NetworkTablesReciever {
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
         NetworkTable table = inst.getTable("datatable");
         //TODO: get entries 
-        NetworkTableEntry xEntry = table.getEntry("x");
-        NetworkTableEntry yEntry = table.getEntry("y");
+        NetworkTableEntry drivePath = table.getEntry("drivePath");
         inst.startClientTeam(2022); //TODO: update number // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
         while (true) {
           try {
@@ -25,9 +24,8 @@ public class NetworkTablesReciever {
             return;
           }
           //TODO: Add entry fields
-          double x = xEntry.getDouble(0.0);
-          double y = yEntry.getDouble(0.0);
-          System.out.println("X: " + x + " Y: " + y);
+          double p = drivePath.getDouble(0.0);
+          System.out.println("path: " + p);
         }
       }
 }
