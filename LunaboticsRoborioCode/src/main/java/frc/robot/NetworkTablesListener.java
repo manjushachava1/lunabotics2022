@@ -19,19 +19,13 @@ public class NetworkTablesListener {
         NetworkTable datatable = inst.getTable("datatable");
   
         //get a reference to key in "datatable" called "Y"
-        NetworkTableEntry yEntry = datatable.getEntry("Y");
-        inst.startClientTeam(190);
-  
-        //add an entry listener for changed values of "X", the lambda ("->" operator)
-        //defines the code that should run when "X" changes
-        datatable.addEntryListener("X", (table, key, entry, value, flags) -> {
-           System.out.println("X changed value: " + value.getValue());
-        }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate);
+        NetworkTableEntry drivePath = datatable.getEntry("drivePath");
+        inst.startClientTeam(2022);
   
         //add an entry listener for changed values of "Y", the lambda ("->" operator)
         //defines the code that should run when "Y" changes
-        yEntry.addListener(event -> {
-           System.out.println("Y changed value: " + event.getEntry().getValue());
+        drivePath.addListener(event -> {
+           System.out.println("path changed: " + event.getEntry().getValue());
         }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate);
   
         try {
@@ -44,3 +38,10 @@ public class NetworkTablesListener {
      }
     
 }
+
+// Sample Listener (copy to above then uncomment)
+      //   //add an entry listener for changed values of "X", the lambda ("->" operator)
+      //   //defines the code that should run when "X" changes
+      //   datatable.addEntryListener("X", (table, key, entry, value, flags) -> {
+      //      System.out.println("X changed value: " + value.getValue());
+      //   }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate);
