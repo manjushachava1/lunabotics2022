@@ -23,16 +23,16 @@ def callback(data):
 
 	twist.linear.x = linX
 	twist.angular.z = angZ
-	#pub.publish(twist)
+	pub.publish(twist)
 	
 	
 
 def run():
 	global pub
 	#Currently we don't need to publish as the roborio can't accept ros
-	#pub = rospy.Publisher('lunabotics/mov', Twist)
-	rospy.Subscriber('joy", Joy, callback)
-	ropsy.init node('lunaTeleop')
+	pub = rospy.Publisher('lunabotics/mov', Twist)
+	rospy.init_node('lunaTeleop')
+	rospy.Subscriber('joy', Joy, callback)
 	rospy.spin()
 
 def start():
@@ -43,5 +43,5 @@ def start():
 	netTable = twst
 	run()
 
-if name == '__main__':
+if __name__ == '__main__':
 	start()
