@@ -1,6 +1,17 @@
 <launch>
+
+<!-- Gazebo rendering -->
   <include
-    file="$(find gazebo_ros)/launch/empty_world.launch" />
+    file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/turtlebot3_world.world"/> -->
+    <arg name="world_name" value="$(find lunabotics)/maps/turtlebot_map.world"/>
+    <arg name="paused" value="false"/>
+		<arg name="use_sim_time" value="true"/>
+		<arg name="gui" value="true"/>
+		<arg name="headless" value="false"/>
+		<arg name="debug" value="false"/>
+	</include>
+
   <node
     name="tf_footprint_base"
     pkg="tf"
@@ -17,4 +28,8 @@
     pkg="rostopic"
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
+
+  <!-- Launch lab3 node and path planning nodes-->
+  <node name='lab3' pkg='lunabotics' type='lab3_smooth_drive.py'/>
+  <node name='path_planner' pkg='lunabotics' type='path_planner.py'/>
 </launch>

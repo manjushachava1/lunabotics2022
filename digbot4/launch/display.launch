@@ -1,20 +1,34 @@
 <launch>
-  <arg
-    name="model" />
-  <param
-    name="robot_description"
-    textfile="$(find lunabotics)/digbot4/urdf/digbot4.urdf" />
-  <node
-    name="joint_state_publisher_gui"
-    pkg="joint_state_publisher_gui"
-    type="joint_state_publisher_gui" />
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher" />
-  <node
-    name="rviz"
-    pkg="rviz"
-    type="rviz"
-    args="-d $(find lunabotics)/digbot4/urdf.rviz" />
+
+  <arg name="model" />
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find lunabotics)/rviz/urdf.rviz" />
+  <!--Map Arg-->
+  <arg name="map_file" default="$(find lunabotics)/maps/map.yaml"/>
+  <param name="robot_description" textfile="$(find lunabotics)/digbot4/urdf/digbot4.urdf" />
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+    <param name="rate" value="50"/>
+  </node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find lunabotics)/digbot4/rviz/urdf.rviz" />
+
+  <!-- AMCL -->
+  <include file="$(find lunabotics)/digbot4/launch/amcl.launch"/>
+
+  <!-- MOVE BASE -->
+  <include file="$(find lunabotics)/digbot4/launch/move_base.launch"/>
+
+  <!-- Gazebo launch -->
+  <include file="$(find lunabotics)/digbot4/launch/gazebo.launch"/>
+
+  <!--LIDAR file -->
+  <include file="$(find turtlebot3_bringup)/launch/turtlebot3_lidar.launch">
+    <arg name="set_frame_id" value="front_lidar"/>
+  </include>
+
+    <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+  <node pkg="tf" type="static_transform_publisher" name="base_map" args="0 0 0 0 0 0 /map /odom 100" />
+
 </launch>
