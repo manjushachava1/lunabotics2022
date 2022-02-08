@@ -15,25 +15,17 @@
    <param name="sensor_param" value="param_value" />
   </node>
 
-  <!-- Odometry package-->
-  <node pkg="odom_node_pkg" type="odom_node_type" name="odom_node" output="screen">
-     <param name="odom_param" value="param_value" />
-  </node>
-
-  <!-- TF package-->
-  <node pkg="transform_configuration_pkg" type="transform_configuration_type" name="transform_configuration_name" output="screen">
-     <param name="transform_configuration_param" value="param_value" />
-  </node>
-
   <!-- AMCL -->
   <include file="$(find lunabotics)/digbot4/launch/amcl.launch"/>
 
   <!-- MOVE BASE -->
   <include file="$(find lunabotics)/digbot4/launch/move_base.launch"/>
 
+  <!-- Gazebo launch -->
+  <include file="$(find lunabotics)/digbot4/launch/gazebo.launch"/>
+
     <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
-  <node pkg="tf" type="static_transform_publisher" name="base_map" args="0 0 0 0 0 0 /odom /map 100" />
-  <node pkg="tf" type="static_transform_publisher" name="base_link_odom" args="0 0 0 1.571 0 0 /map /base_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_map" args="0 0 0 0 0 0 /map /odom 100" />
 
 </launch>

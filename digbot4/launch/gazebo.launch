@@ -27,10 +27,6 @@
     type="rostopic"
     args="pub /calibrated std_msgs/Bool true" />
 
-
-  <!--Run the tranformer to set the center of the odom frame to the map frame-->
-  <node name="static_transform_publisher" type="static_transform_publisher" pkg="tf" args="0 0 0 0 0 0 /map /odom 100"/>
-
   <!-- Launch lab3 node and path planning nodes-->
   <node name='lab3' pkg='lunabotics' type='lab3_smooth_drive.py'/>
   <node name='path_planner' pkg='lunabotics' type='path_planner.py'/>
