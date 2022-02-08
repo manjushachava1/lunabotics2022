@@ -4,11 +4,13 @@
      For more information, please see http://lunabotics/wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="digbot4" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find lunabotics)/urdf/digbot4.gazebo.xacro"/>
+
   <link
     name="base_link">
     <inertial>
       <origin
-        xyz="-0.0017086 -1.5259E-05 0.0099399"
+        xyz="0.002398 0.00003 -0.022649"
         rpy="0 0 0" />
       <mass
         value="7.7847" />
