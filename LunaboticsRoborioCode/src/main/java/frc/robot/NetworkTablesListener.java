@@ -16,18 +16,24 @@ public class NetworkTablesListener {
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
   
         //get a reference to the subtable called "datatable"
-        NetworkTable datatable = inst.getTable("datatable");
+        NetworkTable table = inst.getTable("Table");
   
         //get a reference to key in "datatable" called "Y"
-        NetworkTableEntry drivePath = datatable.getEntry("drivePath");
-        inst.startClientTeam(2022);
+        NetworkTableEntry x = table.getEntry("linearX");
+        NetworkTableEntry z = table.getEntry("angularZ");
+      //   NetworkTableEntry drivePath = datatable.getEntry("drivePath");
+        inst.startClientTeam(2021);
   
         //add an entry listener for changed values of "Y", the lambda ("->" operator)
         //defines the code that should run when "Y" changes
-        drivePath.addListener(event -> {
-           System.out.println("path changed: " + event.getEntry().getValue());
+        x.addListener(event -> {
+           System.out.println("x changed: " + event.getEntry().getValue());
         }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate);
   
+        z.addListener(event -> {
+         System.out.println("x changed: " + event.getEntry().getValue());
+         }, EntryListenerFlags.kNew | EntryListenerFlags.kUpdate);
+
         try {
            Thread.sleep(10000);
         } catch (InterruptedException ex) {

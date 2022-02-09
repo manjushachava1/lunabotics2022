@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import frc.robot.Constants;
 
 
 /** Represents a differential drive style drivetrain. */
@@ -27,18 +28,18 @@ public class Drivetrain {
   private static final double kWheelRadius = 0.0508; // meters
   private static final int kEncoderResolution = 4096;
 
-  private final MotorController m_leftLeader = new PWMSparkMax(1);
-  private final MotorController m_leftFollower = new PWMSparkMax(2);
-  private final MotorController m_rightLeader = new PWMSparkMax(3);
-  private final MotorController m_rightFollower = new PWMSparkMax(4);
+  private final MotorController leftFront = new PWMSparkMax(Constants.CHA_LF_SPARK_ID);
+  private final MotorController leftBack = new PWMSparkMax(Constants.CHA_LB_SPARK_ID);
+  private final MotorController rightFront = new PWMSparkMax(Constants.CHA_RF_SPARK_ID);
+  private final MotorController rightBack = new PWMSparkMax(Constants.CHA_RB_SPARK_ID);
 
   private final Encoder m_leftEncoder = new Encoder(0, 1);
   private final Encoder m_rightEncoder = new Encoder(2, 3);
 
   private final MotorControllerGroup m_leftGroup =
-      new MotorControllerGroup(m_leftLeader, m_leftFollower);
+      new MotorControllerGroup(leftFront, leftBack);
   private final MotorControllerGroup m_rightGroup =
-      new MotorControllerGroup(m_rightLeader, m_rightFollower);
+      new MotorControllerGroup(rightFront, rightBack);
 
   private final AnalogGyro m_gyro = new AnalogGyro(0);
 
@@ -110,5 +111,16 @@ public class Drivetrain {
   public void updateOdometry() {
     m_odometry.update(
         m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
+  }
+
+  public void teleopDrive(double fwd, double ang){
+    // set motor speeds from twist messages
+    //TODO 
+
+    // send speed to motor 
+      leftFront.set(1.0);
+      leftBack.set(1.0);
+      rightFront.set(1.0);
+      rightBack.set(1.0);
   }
 }

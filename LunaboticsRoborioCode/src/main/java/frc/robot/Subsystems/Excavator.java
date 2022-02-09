@@ -1,5 +1,6 @@
 package frc.robot.Subsystems;
 
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -12,6 +13,8 @@ public class Excavator extends SubsystemBase{
     private TalonSRX rotateTalon;
     private TalonSRX traverseTalon; 
 
+    private final AnalogPotentiometer rotPot; 
+
     private static final int DIG_POS = 200; //TODO: set correct pos
     private static final int TRAVEL_POS = 800; //TODO: set correct pos
 
@@ -19,6 +22,7 @@ public class Excavator extends SubsystemBase{
         excTalon = new TalonSRX(Constants.EXC_TALON_ID);
         rotateTalon = new TalonSRX(Constants.EXC_ROTATE_ID);
         traverseTalon = new TalonSRX(Constants.EXC_TRAVERSE_ID);
+        rotPot = new AnalogPotentiometer(Constants.EXC_ROTATE_POT);
     }   
 
     // spins excavator belt
