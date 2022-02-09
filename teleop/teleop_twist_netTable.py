@@ -35,10 +35,11 @@ def run():
 	rospy.Subscriber('joy', Joy, callback)
 	rospy.spin()
 
+
 def start():
 	logging.basicConfig(level=logging.DEBUG)
 	NetworkTables.initialize()
-	twst = NetworkTables.getTable("TwistValues")
+	twst = NetworkTables.getTable("Table")
 	global netTable
 	netTable = twst
 	run()
