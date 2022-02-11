@@ -8,7 +8,7 @@ inflation_radius: 1.0
 cost_scaling_factor: 3.0
 
 map_type: costmap
-observation_sources: scan crater camera
+observation_sources: scan 
 camera: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/octomap_obstacles, marking: true, clearing: true}
 scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
 crater: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/voxel_grid/output, marking: true, clearing: true}
