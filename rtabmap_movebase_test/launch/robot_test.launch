@@ -36,7 +36,7 @@
       <param name="subscribe_scan"      type="bool"   value="true"/>
       <param name="approx_sync"         type="bool"   value="true"/>
       <param name="Grid/Sensor" type="string" value="1"/>
-      <param name="proj_max_ground_angle" value="10"/>
+      <param name="proj_max_ground_angle" value="45"/>
       <param name="Grid/RayTracing" type="bool" value="true"/>
       <param name="RGBD/CreateOccupancyGrid" type="bool" value="true"/>
 
