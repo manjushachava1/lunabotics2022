@@ -690,7 +690,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://base_link.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/base_link.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -712,7 +712,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_lidar.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_lidar.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -734,7 +734,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_lidar.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_lidar.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -756,7 +756,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://base_link.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/base_link.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -765,7 +765,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_lidar.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_lidar.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -774,7 +774,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_lidar.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_lidar.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -801,7 +801,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_cam_mount.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_cam_mount.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -823,7 +823,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_cam_mount.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_cam_mount.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -868,7 +868,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_cam.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_cam.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -890,7 +890,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_cam.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_cam.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -937,7 +937,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_left_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_left_wheel.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -959,7 +959,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_left_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_left_wheel.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1004,7 +1004,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_right_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_right_wheel.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1026,7 +1026,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://front_right_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/front_right_wheel.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1071,7 +1071,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_cam_mount.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_cam_mount.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1093,7 +1093,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_cam_mount.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_cam_mount.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1138,7 +1138,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_cam.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_cam.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1160,7 +1160,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_cam.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_cam.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1207,7 +1207,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_left_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_left_wheel.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1229,7 +1229,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_left_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_left_wheel.STL</uri>
             </mesh>
           </geometry>
         </visual>
@@ -1274,7 +1274,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_right_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_right_wheel.STL</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -1296,7 +1296,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>model://rear_right_wheel.STL</uri>
+              <uri>/home/karen/catkin_ws/src/lunabotics/digbot4/meshes/rear_right_wheel.STL</uri>
             </mesh>
           </geometry>
         </visual>

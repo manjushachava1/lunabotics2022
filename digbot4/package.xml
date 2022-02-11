@@ -16,6 +16,8 @@ for digbot4 robot</p>
   <depend>joint_state_publisher_gui</depend>
   <depend>gazebo</depend>
   <export>
+    <gazebo_ros gazebo_model_path="$(find lunabotics)/digbot4/meshes"/>
+    <gazebo_ros gazebo_media_path="$(find lunabotics)/digbot4/meshes"/>
     <architecture_independent />
   </export>
 </package>
