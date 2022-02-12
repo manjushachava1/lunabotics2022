@@ -2,15 +2,31 @@ cmake_minimum_required(VERSION 3.0.2)
 project(lunabotics)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+  gazebo_ros
+  roscpp
+  geometry_msgs
+  std_msgs
+  sensor_msgs
+)
+find_package(gazebo REQUIRED)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES robot_tutorial_1
+#  CATKIN_DEPENDS gazebo_ros roscpp
+#  DEPENDS system_libi
+  DEPENDS
+    roscpp
+    gazebo_ros
+    message_runtime
+)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -109,42 +125,26 @@ catkin_package(
 ## Build ##
 ###########
 
-## Specify additional locations of header files
-## Your package locations should be listed before other locations
-include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
+# Link to gazebo
+link_directories(
+  ${GAZEBO_LIBRARY_DIRS}
 )
 
-## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/lunabotics.cpp
-# )
+# Include dirs.
+include_directories(
+# include
+  ${catkin_INCLUDE_DIRS}
+  ${roscpp_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
+)
 
-## Add cmake target dependencies of the library
-## as an example, code may need to be generated before libraries
-## either from message generation or dynamic reconfigure
-# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# Compile plugin
+add_library(rover_plugin digbot4/plugins/rover.cc)
+target_link_libraries(rover_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${roscpp_LIBRARIES})
 
-## Declare a C++ executable
-## With catkin_make all packages are built within a single CMake context
-## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/lunabotics_node.cpp)
-
-## Rename C++ executable without prefix
-## The above recommended prefix causes long target names, the following renames the
-## target back to the shorter version for ease of user use
-## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-# set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
-
-## Add cmake target dependencies of the executable
-## same as for the library above
-# add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+add_executable(teleop_twist_netTable teleop/teleop_twist_netTable.py)
+target_link_libraries(teleop_twist_netTable ${catkin_LIBRARIES})
 
 #############
 ## Install ##
