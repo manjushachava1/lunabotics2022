@@ -118,9 +118,9 @@ public class Drivetrain {
     //TODO 
 
     // send speed to motor 
-      leftFront.set(1.0);
-      leftBack.set(1.0);
-      rightFront.set(1.0);
-      rightBack.set(1.0);
+    leftFront.set(1.0);
+    leftBack.set(1.0);
+    rightFront.set(1.0);
+    rightBack.set(1.0);
   }
 }

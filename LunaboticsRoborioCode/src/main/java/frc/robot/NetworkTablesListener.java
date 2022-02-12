@@ -22,7 +22,8 @@ public class NetworkTablesListener {
         NetworkTableEntry x = table.getEntry("linearX");
         NetworkTableEntry z = table.getEntry("angularZ");
       //   NetworkTableEntry drivePath = datatable.getEntry("drivePath");
-        inst.startClientTeam(2021);
+        inst.startClient("130.215.211.73");
+      //   inst.startClientTeam(2022);
   
         //add an entry listener for changed values of "Y", the lambda ("->" operator)
         //defines the code that should run when "Y" changes

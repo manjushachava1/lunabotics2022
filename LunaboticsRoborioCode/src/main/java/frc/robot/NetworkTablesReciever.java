@@ -19,7 +19,7 @@ public class NetworkTablesReciever {
         NetworkTableEntry z = table.getEntry("angularZ");
         // NetworkTableEntry drivePath = table.getEntry("drivePath");
         inst.startClient("130.215.211.73");
-        // inst.startClientTeam(2021); //TODO: update number // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
+        // inst.startClientTeam(2022); // where TEAM=190, 294, etc, or use inst.startClient("hostname") or similar
         while (true) {
           try {
             Thread.sleep(1000);
