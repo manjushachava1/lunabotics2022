@@ -5,6 +5,8 @@
 package frc.robot;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Subsystems.Drivetrain;
@@ -17,6 +19,15 @@ public class Robot extends TimedRobot {
   private final SlewRateLimiter m_speedLimiter = new SlewRateLimiter(3);
   private final SlewRateLimiter m_rotLimiter = new SlewRateLimiter(3);
 
+  NetworkTable table;
+  double[] areas;
+  double[] defaultValue = new double[0];
+
+  @Override
+  public void robotInit() {
+    table = NetworkTableInstance.getDefault().getTable("Table");
+  }
+  
   @Override
   public void autonomousPeriodic() {
     teleopPeriodic();
@@ -36,5 +47,15 @@ public class Robot extends TimedRobot {
     final var rot = -m_rotLimiter.calculate(m_controller.getRightX()) * Drivetrain.kMaxAngularSpeed;
 
     m_drive.drive(xSpeed, rot);
+
+    double[] linX = table.getEntry("linearX").getDoubleArray(defaultValue);
+
+    System.out.print("X: " );
+
+    for (double val : linX) {
+      System.out.print(val + " ");
+    }
+
+    System.out.println();
   }
 }

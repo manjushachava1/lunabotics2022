@@ -24,11 +24,11 @@ public class Drivetrain {
   public static final double kMaxSpeed = 3.0; // meters per second
   public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
 
-  private static final double kTrackWidth = 0.381 * 2; // meters
-  private static final double kWheelRadius = 0.0508; // meters
+  private static final double kTrackWidth = 0.5; //0.381 * 2; // meters
+  private static final double kWheelRadius = 0.125; //0.0508; // meters
   private static final int kEncoderResolution = 4096;
 
-  private final MotorController leftFront = new PWMSparkMax(Constants.CHA_LF_SPARK_ID);
+  private final MotorController leftFront = new PWMSparkMax(Constants.CHA_LF_SPARK_ID); 
   private final MotorController leftBack = new PWMSparkMax(Constants.CHA_LB_SPARK_ID);
   private final MotorController rightFront = new PWMSparkMax(Constants.CHA_RF_SPARK_ID);
   private final MotorController rightBack = new PWMSparkMax(Constants.CHA_RB_SPARK_ID);
