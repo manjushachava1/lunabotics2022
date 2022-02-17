@@ -1,7 +1,5 @@
 <launch>
-  <!--
-    $ sudo apt install ros-melodic-turtlebot3* ros-melodic-dwa-local-planner
-  -->
+  <!-- $ sudo apt install ros-melodic-turtlebot3* ros-melodic-dwa-local-planner -->
 
   <!-- Arguments -->
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
