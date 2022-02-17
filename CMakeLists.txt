@@ -143,12 +143,15 @@ include_directories(
 add_library(rover_plugin digbot4/plugins/rover.cc)
 target_link_libraries(rover_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${roscpp_LIBRARIES})
 
-add_executable(teleop_twist_netTable teleop/teleop_twist_netTable.py)
-target_link_libraries(teleop_twist_netTable ${catkin_LIBRARIES})
+#add_executable(teleop_twist_netTable teleop/teleop_twist_netTable.py)
+#target_link_libraries(teleop_twist_netTable ${catkin_LIBRARIES})
 
 #############
 ## Install ##
 #############
+catkin_python_setup()
+
+catkin_install_python(PROGRAMS teleop/teleop_twist_netTable.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 # all install targets should use catkin DESTINATION variables
 # See http://ros.org/doc/api/catkin/html/adv_user_guide/variables.html
