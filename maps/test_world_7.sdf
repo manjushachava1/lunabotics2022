@@ -290,7 +290,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
         <link name='Rocks_Better::link_2'>
-          <pose frame=''>-1.10143 -0.335012 0.60169 0.065529 -0.019904 -0.000666</pose>
+          <pose frame=''>-1.10143 -0.635012 0.60169 0.065529 -0.019904 -0.000666</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -443,7 +443,7 @@
           <pose frame=''>0 0 0 0 -0 0</pose>
         </inertial>
         <pose frame=''>-0.876546 -0.808501 -0 0 -0 0</pose>
-        <gravity>0</gravity>
+        <gravity>1</gravity>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
@@ -642,8 +642,8 @@
           </inertia>
           <pose frame=''>0 0 0 0 -0 0</pose>
         </inertial>
-        <pose frame=''>0.692093 -0.314823 0 0 -0 0</pose>
-        <gravity>0</gravity>
+        <pose frame=''>0.692093 -0.614823 0 0 -0 0</pose>
+        <gravity>1</gravity>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
         <enable_wind>0</enable_wind>
@@ -729,7 +729,7 @@
           </surface>
         </collision>
       </link>
-      <static>0</static>
+      <static>1</static>
       <allow_auto_disable>1</allow_auto_disable>
       <pose frame=''>-1.81797 -0.100604 1.83067 0.065529 -0.019904 -0.000666</pose>
     </model>
