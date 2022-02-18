@@ -113,14 +113,4 @@ public class Drivetrain {
         m_gyro.getRotation2d(), m_leftEncoder.getDistance(), m_rightEncoder.getDistance());
   }
 
-  public void teleopDrive(double fwd, double ang){
-    // set motor speeds from twist messages
-    //TODO 
-
-    // send speed to motor 
-    leftFront.set(1.0);
-    leftBack.set(1.0);
-    rightFront.set(1.0);
-    rightBack.set(1.0);
-  }
 }

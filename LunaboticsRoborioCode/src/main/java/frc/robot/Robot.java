@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -36,26 +37,33 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    // Get the x speed. We are inverting this because Xbox controllers return
-    // negative values when we push forward.
-    final var xSpeed = -m_speedLimiter.calculate(m_controller.getLeftY()) * Drivetrain.kMaxSpeed;
+    // // Get the x speed. We are inverting this because Xbox controllers return
+    // // negative values when we push forward.
+    // final var xSpeed = -m_speedLimiter.calculate(m_controller.getLeftY()) * Drivetrain.kMaxSpeed;
 
-    // Get the rate of angular rotation. We are inverting this because we want a
-    // positive value when we pull to the left (remember, CCW is positive in
-    // mathematics). Xbox controllers return positive values when you pull to
-    // the right by default.
-    final var rot = -m_rotLimiter.calculate(m_controller.getRightX()) * Drivetrain.kMaxAngularSpeed;
+    // // Get the rate of angular rotation. We are inverting this because we want a
+    // // positive value when we pull to the left (remember, CCW is positive in
+    // // mathematics). Xbox controllers return positive values when you pull to
+    // // the right by default.
+    // final var rot = -m_rotLimiter.calculate(m_controller.getRightX()) * Drivetrain.kMaxAngularSpeed;
 
-    m_drive.drive(xSpeed, rot);
+    // m_drive.drive(xSpeed, rot);
 
-    double[] linX = table.getEntry("linearX").getDoubleArray(defaultValue);
+    // gets table values as doubles, returns 0 if table is empty 
+    double linX = -table.getEntry("linearX").getDouble(0);
+    double angZ = -table.getEntry("angularZ").getDouble(0);
 
-    System.out.print("X: " );
+    m_drive.drive(linX, angZ);
 
-    for (double val : linX) {
-      System.out.print(val + " ");
-    }
 
-    System.out.println();
+    // double[] linX = table.getEntry("linearX").getDoubleArray(defaultValue);
+
+    // System.out.print("X: " );
+
+    // for (double val : linX) {
+    //   System.out.print(val + " ");
+    // }
+
+    // System.out.println();
   }
 }
