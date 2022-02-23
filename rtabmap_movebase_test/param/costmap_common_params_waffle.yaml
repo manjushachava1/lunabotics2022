@@ -9,7 +9,7 @@ cost_scaling_factor: 5.0
 
 map_type: costmap
 observation_sources: scan crater camera
-camera: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/octomap_obstacles, marking: true, clearing: true}
-scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: true}
-crater: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/voxel_grid/output, marking: true, clearing: false}
+camera: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/local_grid_obstacle, marking: true, clearing: true}
+scan: {sensor_frame: base_scan, data_type: LaserScan, topic: scan, marking: true, clearing: false}
+crater: {sensor_frame: base_footprint, data_type: PointCloud2, topic: /rtabmap/voxel_grid/output, marking: true, clearing: true}
 
