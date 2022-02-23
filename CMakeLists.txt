@@ -149,7 +149,7 @@ target_link_libraries(rover_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${ros
 #############
 ## Install ##
 #############
-catkin_python_setup()
+#catkin_python_setup()
 
 catkin_install_python(PROGRAMS teleop/teleop_twist_netTable.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
