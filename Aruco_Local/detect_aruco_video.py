@@ -5,11 +5,13 @@ python3 detect_aruco_video.py
 
 import numpy as np
 from utils import ARUCO_DICT, aruco_display
-import argparse
 import time
 import cv2
-import sys
 import pyrealsense2 as rs
+import math
+
+align_to = rs.stream.depth
+align = rs.align(align_to)
 
 # Configure depth and color streams
 #IMU: 923322071214
@@ -30,7 +32,7 @@ config2.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 pipeline1.start(config1)
 pipeline2.start(config2)
 
-time.sleep(1.0)
+time.sleep(0.5)
 
 arucoDict = cv2.aruco.Dictionary_get(ARUCO_DICT["DICT_5X5_100"])
 arucoParams = cv2.aruco.DetectorParameters_create()
@@ -38,27 +40,31 @@ arucoParams = cv2.aruco.DetectorParameters_create()
 while True:
 
 	frames1 = pipeline1.wait_for_frames()
+	frames1 = align.process(frames1)
 	depth_frame1 = frames1.get_depth_frame()
 	color_frame1 = frames1.get_color_frame()
 
 	frames2 = pipeline2.wait_for_frames()
+	frames2 = align.process(frames2)
 	depth_frame2 = frames2.get_depth_frame()
 	color_frame2 = frames2.get_color_frame()
 
 	if not depth_frame1 or not color_frame2 or not depth_frame2 or not color_frame2:
+		print("display fail")
 		continue
 
 	color_image1 = np.asanyarray(color_frame1.get_data())
-	gray1 = cv2.cvtColor(color_image1, cv2.COLOR_BGR2GRAY)
+	#gray1 = cv2.cvtColor(color_image1, cv2.COLOR_BGR2GRAY)
 
 	color_image2 = np.asanyarray(color_frame2.get_data())
-	gray2 = cv2.cvtColor(color_image2, cv2.COLOR_BGR2GRAY)
+	#gray2 = cv2.cvtColor(color_image2, cv2.COLOR_BGR2GRAY)
 
-	corners1, ids1, rejected1 = cv2.aruco.detectMarkers(gray1, arucoDict, parameters=arucoParams)
-	corners2, ids2, rejected2 = cv2.aruco.detectMarkers(gray2, arucoDict, parameters=arucoParams)
 
-	detected_markers1 = aruco_display(corners1, ids1, rejected1, gray1)
-	detected_markers2 = aruco_display(corners2, ids2, rejected2, gray2)
+	corners1, ids1, rejected1 = cv2.aruco.detectMarkers(color_image1, arucoDict, parameters=arucoParams)
+	corners2, ids2, rejected2 = cv2.aruco.detectMarkers(color_image2, arucoDict, parameters=arucoParams)
+
+	detected_markers1 = aruco_display(corners1, ids1, rejected1, color_image1)
+	detected_markers2 = aruco_display(corners2, ids2, rejected2, color_image2)
 
 	depth_point = []
 
@@ -68,24 +74,26 @@ while True:
 		x_sum = corners1[0][0][0][0] + corners1[0][0][1][0] + corners1[0][0][2][0] + corners1[0][0][3][0]
 		y_sum = corners1[0][0][0][1] + corners1[0][0][1][1] + corners1[0][0][2][1] + corners1[0][0][3][1]
     
-		x_centerPixel = x_sum*.25
-		y_centerPixel = y_sum*.25
+		x_centerPixel = x_sum / 4
+		y_centerPixel = y_sum / 4
 
 		color_point = [x_centerPixel, y_centerPixel]
 
 		x_int = int(x_centerPixel)
 		y_int = int(y_centerPixel)
-
 		depth_value = depth_frame1.get_distance(x_int, y_int)
 
 		if(depth_value == 0):
+			print("depth 0")
 			continue
 
-		depth_point = rs.rs2_deproject_pixel_to_point(depth_intri, color_point, depth_value)
+		dx, dy, dz = rs.rs2_deproject_pixel_to_point(depth_intri, color_point, depth_value)
+		depth = math.sqrt(((dx)**2) + ((dy)**2) + ((dz)**2))
+		depth_point = [dx, dy, depth]
 		depth_point.append(1)
 		print(depth_point)
 
-	elif(len(corners2) > 0):
+	if(len(corners2) > 0):
 		depth_intri = depth_frame2.profile.as_video_stream_profile().intrinsics
 
 		x_sum = corners2[0][0][0][0] + corners2[0][0][1][0] + corners2[0][0][2][0] + corners2[0][0][3][0]
@@ -98,21 +106,19 @@ while True:
 
 		x_int = int(x_centerPixel)
 		y_int = int(y_centerPixel)
-
-		print(x_int)
-		print(y_int)
-
-
 		depth_value = depth_frame2.get_distance(x_int, y_int)
 
 		if(depth_value == 0):
+			print("depth 0")
 			continue
 
-		depth_point = rs.rs2_deproject_pixel_to_point(depth_intri, color_point, depth_value)
+		dx, dy, dz = rs.rs2_deproject_pixel_to_point(depth_intri, color_point, depth_value)
+		depth = math.sqrt(((dx)**2) + ((dy)**2) + ((dz)**2))
+		depth_point = [dx, dy, depth]		
 		depth_point.append(2)
 		print(depth_point)
 
-	images = np.hstack((detected_markers2, detected_markers1))
+	images = np.hstack((detected_markers1, detected_markers2))
 	cv2.imshow("Image", images)
 
 	key = cv2.waitKey(1) & 0xFF
