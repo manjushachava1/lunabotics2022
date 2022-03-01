@@ -21,8 +21,8 @@ import frc.robot.Constants;
 /** Represents a differential drive style drivetrain. */
 public class Drivetrain {
 
-  public static final double kMaxSpeed = 3.0; // meters per second
-  public static final double kMaxAngularSpeed = 2 * Math.PI; // one rotation per second
+  public static final double kMaxSpeed = 1.2; // 3.0; // meters per second
+  public static final double kMaxAngularSpeed =  2.6 ;//2 * Math.PI; // one rotation per second
 
   private static final double kTrackWidth = 0.5; //0.381 * 2; // meters
   private static final double kWheelRadius = 0.125; //0.0508; // meters
@@ -43,8 +43,8 @@ public class Drivetrain {
 
   private final AnalogGyro m_gyro = new AnalogGyro(0);
 
-  private final PIDController m_leftPIDController = new PIDController(1, 0, 0);
-  private final PIDController m_rightPIDController = new PIDController(1, 0, 0);
+  private final PIDController m_leftPIDController = new PIDController(5, 1.5, 7);
+  private final PIDController m_rightPIDController = new PIDController(5, 1.5, 7);
 
   private final DifferentialDriveKinematics m_kinematics =
       new DifferentialDriveKinematics(kTrackWidth);
@@ -52,7 +52,7 @@ public class Drivetrain {
   private final DifferentialDriveOdometry m_odometry;
 
   // Gains are for example purposes only - must be determined for your own robot!
-  private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(1, 3);
+  private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(0, 0);
 
   /**
    * Constructs a differential drive object. Sets the encoder distance per pulse and resets the

@@ -11,7 +11,7 @@ public class Constants {
     public static final int CHA_RB_SPARK_ID = 1; // right back
 
     // Excavator Constants
-    public static final int EXC_TALON_ID = 1;
+    public static final int EXC_TALON_ID = 5;
     public static final int EXC_ROTATE_ID = 3; 
     public static final int EXC_ROTATE_POT = 1;
     public static final int EXC_TRAVERSE_ID = 4; 
