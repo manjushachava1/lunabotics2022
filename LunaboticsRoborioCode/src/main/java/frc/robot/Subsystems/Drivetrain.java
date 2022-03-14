@@ -15,14 +15,15 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
 
 
 /** Represents a differential drive style drivetrain. */
 public class Drivetrain {
 
-  public static final double kMaxSpeed = 1.2; // 3.0; // meters per second
-  public static final double kMaxAngularSpeed =  2.6 ;//2 * Math.PI; // one rotation per second
+  public static final double kMaxSpeed = 1.0;//3.0; // meters per second
+  public static final double kMaxAngularSpeed = 2* 2 * Math.PI; // one rotation per second
 
   private static final double kTrackWidth = 0.5; //0.381 * 2; // meters
   private static final double kWheelRadius = 0.125; //0.0508; // meters
@@ -53,6 +54,7 @@ public class Drivetrain {
 
   // Gains are for example purposes only - must be determined for your own robot!
   private final SimpleMotorFeedforward m_feedforward = new SimpleMotorFeedforward(0, 0);
+
 
   /**
    * Constructs a differential drive object. Sets the encoder distance per pulse and resets the
@@ -104,7 +106,12 @@ public class Drivetrain {
   @SuppressWarnings("ParameterName")
   public void drive(double xSpeed, double rot) {
     var wheelSpeeds = m_kinematics.toWheelSpeeds(new ChassisSpeeds(xSpeed, 0.0, rot));
-    setSpeeds(wheelSpeeds);
+    // setSpeeds(wheelSpeeds);
+    m_rightGroup.setVoltage(wheelSpeeds.rightMetersPerSecond);
+    m_leftGroup.setVoltage(wheelSpeeds.leftMetersPerSecond);
+    SmartDashboard.putString("DB/String 0", String.valueOf(wheelSpeeds.leftMetersPerSecond));
+    SmartDashboard.putString("DB/String 1", String.valueOf(wheelSpeeds.rightMetersPerSecond));
+
   }
 
   /** Updates the field-relative position. */
